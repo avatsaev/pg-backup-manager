@@ -1,6 +1,6 @@
 FROM debian:stretch-slim
 
-
+MAINTAINER: 'Aslan VATSAEV (@avatsaev)'
 RUN apt-get update && \
     apt-get install -y curl netcat cron gnupg
 RUN echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" > /etc/apt/sources.list.d/pgdg.list
