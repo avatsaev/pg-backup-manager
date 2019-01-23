@@ -1,0 +1,4 @@
+restic
+restic/*
+export/*
+.idea
