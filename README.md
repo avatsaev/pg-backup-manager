@@ -1,21 +1,16 @@
-# docker-postgres-backup
+# Postgres backup manager
 
-This image runs pg_dump to backup data using cronjob to folder `/backup`
+This image runs pg_dump to backup data using cronjob to folder `/backup` (compatible with postgres 10 and 11, use the appropriate tags)
 
 ## Usage:
 
     docker run -d \
-        --env PG_HOST=mysql.host \
-        --env PG_PORT=27017 \
-        --env PG_USER=admin \
-        --env PG_PASSWORD=password \
+        --env POSTGRES_HOST=mysql.host \
+        --env POSTGRES_PORT=27017 \
+        --env POSTGRES_USER=admin \
+        --env POSTGRES_PASSWORD=password \
         --volume host.folder:/backup
-        jmcarbo/docker-postgres-backup
-
-Moreover, if you link `jmcarbo/docker-postgres-backup` to a postgres container (e.g. `tutum/mysql`) with an alias named pg, this image will try to auto load the `host`, `port`, `user`, `pass` if possible.
-
-    docker run -d -p 27017:27017 -p 28017:28017 -e PG_PASS="mypass" --name pg postgres
-    docker run -d --link pg:pg -v host.folder:/backup jmcarbo/docker-postgres-backup
+        avatsaev/pg-backup-manager
 
 ## Parameters
 
@@ -40,8 +35,8 @@ Moreover, if you link `jmcarbo/docker-postgres-backup` to a postgres container (
 
 See the list of backups, you can run:
 
-    docker exec docker-postgres-backup ls /backup
+    docker exec pg-backup-manager ls /backup
 
 To restore database from a certain backup, simply run:
 
-    docker exec docker-postgres-backup /restore.sh /backup/2015.08.06.171901
+    docker exec pg-backup-manager /restore.sh /backup/2015.08.06.171901
