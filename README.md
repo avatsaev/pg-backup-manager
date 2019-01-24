@@ -1,6 +1,6 @@
 # Postgres backup manager
 
-This image runs pg_dump to backup data using cronjob to folder `/backup` (compatible with postgres 10 and 11, use the appropriate tags)
+This image runs pg_dump to backup data using cronjob to folder `/backup` (compatible with postgres 9.6, 10 and 11, use the appropriate tags)
 
 ## Usage:
 
